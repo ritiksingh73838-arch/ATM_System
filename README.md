@@ -21,8 +21,9 @@ A console-based ATM system built with *Java, **JDBC* and *MySQL*.
 - IntelliJ IDEA
 
 ## Security
-- Database credentials are kept in config.properties, which is excluded from Git via .gitignore
-- Use PreparedStatement for all user-input queries (protects against SQL injection)
+- Database credentials are never stored in the code or in this repository
+- They are read from a local config.properties file, which is excluded from Git via .gitignore
+- A template file config.example.properties shows the required format
 
 ## Database Setup
 sql
@@ -33,18 +34,14 @@ CREATE TABLE IF NOT EXISTS accounts (
     account_number VARCHAR(20) PRIMARY KEY
 );
 
-(Add the remaining columns, such as holder name, PIN and balance, as per your table.)
+Add the remaining columns (holder name, PIN, balance) as per your table.
 
 ## How to Run
 1. Install MySQL and create the database using the SQL above.
 2. Add mysql-connector-j to the project libraries.
-3. Create a config.properties file in the project root:
-   
-   db.url=jdbc:mysql://localhost:3306/ATM_db
-   db.username=root
-   db.password=your_password_here
-   
-4. Run ATMApplication.java.
+3. Copy config.example.properties to a new file named config.properties in the project root.
+4. Open config.properties and fill in your own MySQL details.
+5. Run ATMApplication.java.
 
 ## Author
 *Ritik Singh*
